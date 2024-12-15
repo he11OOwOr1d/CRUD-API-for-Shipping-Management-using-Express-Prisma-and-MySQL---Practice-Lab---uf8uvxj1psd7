@@ -29,7 +29,7 @@ app.put("/api/shipping/cancel", async(req,res)=>{
       status: "cancelled"
     }
   })
-  res.status(200).json(cancel)
+  return res.status(200).json(cancel)
 })
 
 app.listen(PORT, () => {
