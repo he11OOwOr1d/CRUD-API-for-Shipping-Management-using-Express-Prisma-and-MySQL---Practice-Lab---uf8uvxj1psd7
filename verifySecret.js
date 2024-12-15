@@ -1,9 +1,8 @@
 const SHIPPING_SECRET_KEY = process.env.SHIPPING_SECRET_KEY;
 
 const verifySecret = (req, res, next) => {
-  const headerSecret = req.headers['shipping-secret-key'];
+  const headerSecret = req.headers['shipping_secret_key'];
   
-  console.log(!headerSecret)
   if (!headerSecret) {
     console.log("headerSecret is missing")
     return res.status(403).json({ 
@@ -15,7 +14,6 @@ const verifySecret = (req, res, next) => {
       "error": "Failed to authenticate SHIPPING_SECRET_KEY"
     });
   }
-  
   next();
 };
 
