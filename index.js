@@ -21,6 +21,17 @@ app.post('/api/shipping/create', async(req, res) => {
   return res.status(201).json(create);
 });
 
+app.put("/api/shipping/cancel", async(req,res)=>{
+  const {shippingId} = req.body
+  const cancel = await prisma.shipping.update({
+    where: {id: shippingId},
+    data:{
+      status: "cancelled"
+    }
+  })
+  res.status(200).json(cancel)
+})
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

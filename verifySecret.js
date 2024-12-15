@@ -3,8 +3,6 @@ const SHIPPING_SECRET_KEY = process.env.SHIPPING_SECRET_KEY;
 const verifySecret = (req, res, next) => {
   const headerSecret = req.headers['shipping-secret-key'];
   
-  console.log('Environment Secret:', SHIPPING_SECRET_KEY);
-  console.log('Header Secret:', headerSecret);
   
   if (!headerSecret) {
     return res.status(403).json({ 
